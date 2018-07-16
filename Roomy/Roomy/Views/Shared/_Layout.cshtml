@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/roomy.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="~/">Accueil <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.RouteUrl("AboutRoute")">A propos de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Create", "Users")">Ajouter un utilisateur</a>
+                    </li>
+                    
+            </div>
+        </nav>
+
+        @RenderBody()
+
+        <footer class="bg-secondary">
+            &copy; POEC Rouen 2018
+        </footer>
+
+        @* Privilégier les commentaires Razor *@
+
+
+        @*<p>
+            <a href="~/a-propos">A propos</a>
+            <br />
+            @Html.ActionLink("A propos", "About", "Home")
+            <br />
+            <a href="@Url.Action("About", "Home")">A propos</a>
+            <br />
+            <a href="@Url.RouteUrl("AboutRoute")">A propos</a>
+            </p>*@
+    </div>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
