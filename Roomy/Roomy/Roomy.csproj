@@ -203,6 +203,10 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Areas\BackOffice\Views\web.config" />
+    <Content Include="Areas\BackOffice\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -238,6 +242,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -249,11 +255,24 @@
     <Compile Include="Migrations\201807171312218_Init.Designer.cs">
       <DependentUpon>201807171312218_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807180822080_NotMappedConfirmedPassword.cs" />
+    <Compile Include="Migrations\201807180822080_NotMappedConfirmedPassword.Designer.cs">
+      <DependentUpon>201807180822080_NotMappedConfirmedPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807181348345_AddRooms.cs" />
+    <Compile Include="Migrations\201807181348345_AddRooms.Designer.cs">
+      <DependentUpon>201807181348345_AddRooms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Civility.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="Utils\Validators\ExistingMailUser.cs" />
+    <Compile Include="Utils\Validators\ExistingValue.cs" />
+    <Compile Include="Utils\Validators\Major.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -276,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\BackOffice\Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -286,6 +306,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807171312218_Init.resx">
       <DependentUpon>201807171312218_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180822080_NotMappedConfirmedPassword.resx">
+      <DependentUpon>201807180822080_NotMappedConfirmedPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807181348345_AddRooms.resx">
+      <DependentUpon>201807181348345_AddRooms.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
