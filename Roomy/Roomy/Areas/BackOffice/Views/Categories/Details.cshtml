@@ -1,0 +1,25 @@
+﻿@model Roomy.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Catégorie @Model.Name</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Retourner à la liste des catégories", "Index")
+</p>
