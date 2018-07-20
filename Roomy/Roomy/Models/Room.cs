@@ -48,5 +48,7 @@ namespace Roomy.Models
 
         [ForeignKey("CategoryID")]
         public Category Category { get; set; }
+
+        public ICollection<RoomFile> Files { get; set; }
     }
 }
