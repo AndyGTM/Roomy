@@ -8,10 +8,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Roomy.Data;
+using Roomy.Filters;
 using Roomy.Models;
 
 namespace Roomy.Areas.BackOffice.Controllers
 {
+    [AuthenticationFilter]
     public class RoomsController : Controller
     {
         private RoomyDbContext db = new RoomyDbContext();

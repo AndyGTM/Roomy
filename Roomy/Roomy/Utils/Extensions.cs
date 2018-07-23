@@ -26,7 +26,7 @@ namespace Roomy.Utils
                         result += b.ToString("x");
                 }
 
-                return System.Text.Encoding.Default.GetString(hash);
+                return result;
             }
             catch
             {

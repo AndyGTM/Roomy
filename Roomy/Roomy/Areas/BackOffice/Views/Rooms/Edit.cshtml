@@ -82,6 +82,7 @@
              <p>@item.Name <a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></p>
     </div>
 }
+@*"on click return confirm" : confirmation suppression image*@
 
     <form action="@Url.Action("AddFile", "Rooms")" method="post" enctype="multipart/form-data">
         @Html.HiddenFor(x => x.ID)

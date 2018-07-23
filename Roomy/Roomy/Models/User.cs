@@ -36,16 +36,15 @@ namespace Roomy.Models
 
         [Required(ErrorMessage = "Le champ {0} est requis.")]
         [Display(Name = "Mot de passe")]
+        [DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$",
             ErrorMessage = "{0} incorrect.")]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "La confirmation du mot de passe est requise.")]
         [Display(Name = "Confirmer le mot de passe")]
+        [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Erreur sur la confirmation du mot de passe.")]
         [NotMapped]
-        [DataType(DataType.Password)]
         public string ConfirmedPassword { get; set; }
 
         [Required(ErrorMessage = "Civilité obligatoire")]
