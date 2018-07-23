@@ -76,30 +76,45 @@
 
 @foreach (var item in Model.Files)
 {
-    <div class="col-md3">
-
-        <img class="img-thumbnail" title="@item.Name" src="data:@item.ContentType;base64, @Convert.ToBase64String(item.Content)" />
-             <p>@item.Name <a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></p>
-    </div>
+<div class="col-md-3" id="div-file-@item.ID">
+    <img class="img-thumbnail" title="@item.Name" src="data:@item.ContentType;base64, @Convert.ToBase64String(item.Content)" />
+    <p>@item.Name <a href="#" class="btn btn-danger suppr" data-id="@item.ID"><i class="fa fa-remove"></i></a></p>
+</div>
 }
 @*"on click return confirm" : confirmation suppression image*@
 
-    <form action="@Url.Action("AddFile", "Rooms")" method="post" enctype="multipart/form-data">
-        @Html.HiddenFor(x => x.ID)
-        <div class="form-group">
-            <label>Fichier</label>
-            <input type="file" name="upload" class="form-control" />
-        </div>
-        <button type="submit" class="btn btn-warning">Ajouter</button>
-    </form>
-
-    <div>
-        @Html.ActionLink("Retour à la liste des salles", "Index")
+<form action="@Url.Action("AddFile", "Rooms")" method="post" enctype="multipart/form-data">
+    @Html.HiddenFor(x => x.ID)
+    <div class="form-group">
+        <label>Fichier</label>
+        <input type="file" name="upload" class="form-control" />
     </div>
+    <button type="submit" class="btn btn-warning">Ajouter</button>
+</form>
 
-    @section SectionScripts{
-        <script src="~/Scripts/tinymce/tinymce.min.js"></script>
-        <script>
+<div>
+    @Html.ActionLink("Retour à la liste des salles", "Index")
+</div>
+
+@section SectionScripts{
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script>
             tinymce.init({ selector: '#Description' })
-        </script>
-    }
+
+            $(document).ready(function () {
+            $("a.suppr").click(function () {
+                var idFile = $(this).data("id");
+                $.ajax({
+                    url: "@Url.Action("DeleteFile", "Rooms")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { id: idFile },
+                    success: function (obj) {
+                        $("#div-file-" + idFile).remove();
+                        alert("Fichier supprimé.");
+                    }
+                });
+            });
+});
+    </script>
+}
