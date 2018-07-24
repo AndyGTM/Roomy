@@ -51,11 +51,18 @@
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    Bonjour @user.Firstname @user.Lastname <a href="@Url.Action("Logout", "Authentication")"class="btn btn-warning btn-sm"><i class="fa fa-eject"></i></a>
-                    </span>
+                    Bonjour @user.Firstname @user.Lastname <a href="@Url.Action("Logout", "Authentication")" class="btn btn-warning btn-sm"><i class="fa fa-eject"></i></a>
+                </span>
 
             </div>
         </nav>
+
+        @if (TempData["Message"] != null)
+        {
+        <div class="alert alert-@TempData["MessageType"].ToString()">
+             @TempData["Message"].ToString()
+             </div>
+        }
 
         @RenderBody()
 

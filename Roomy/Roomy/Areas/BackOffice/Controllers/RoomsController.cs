@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Roomy.Controllers;
 using Roomy.Data;
 using Roomy.Filters;
 using Roomy.Models;
@@ -14,10 +15,8 @@ using Roomy.Models;
 namespace Roomy.Areas.BackOffice.Controllers
 {
     [AuthenticationFilter]
-    public class RoomsController : Controller
+    public class RoomsController : BaseController
     {
-        private RoomyDbContext db = new RoomyDbContext();
-
         // GET: BackOffice/Rooms
         public ActionResult Index()
         {
@@ -61,6 +60,7 @@ namespace Roomy.Areas.BackOffice.Controllers
             {
                 db.Rooms.Add(room);
                 db.SaveChanges();
+                TempData["Message"] = $"Salle {room.Name} enregistrée.";
                 return RedirectToAction("Index");
             }
 
@@ -101,6 +101,7 @@ namespace Roomy.Areas.BackOffice.Controllers
             {
                 db.Entry(room).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Message"] = $"Salle {room.Name} modifiée.";
                 return RedirectToAction("Index");
             }
             ViewBag.UserID = new SelectList(db.Users, "ID", "Lastname", room.UserID);
@@ -131,6 +132,7 @@ namespace Roomy.Areas.BackOffice.Controllers
             Room room = db.Rooms.Find(id);
             db.Rooms.Remove(room);
             db.SaveChanges();
+            TempData["Message"] = $"Salle supprimée.";
             return RedirectToAction("Index");
         }
 
@@ -153,6 +155,7 @@ namespace Roomy.Areas.BackOffice.Controllers
                 db.RoomFiles.Add(model);
                 db.SaveChanges();
 
+                TempData["Message"] = $"Image ajoutée.";
                 return RedirectToAction("Edit", new { id = model.RoomID });
             }
             else
